@@ -1,0 +1,258 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:#f6f6f6;
+  color:#0b4b8c;
+}
+
+/* Modelo Base Celular según requerimiento */
+.layout{
+  display:grid;
+  grid-template-areas:
+    "topbar"
+    "filters"
+    "main"
+    "pagination"
+    "footer";
+}
+
+/* Títulos Celular */
+.topbar{
+  grid-area:topbar;
+  background:#0b4b8c;
+  color:white;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.top-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+}
+
+.topbar h1{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.menu-icon{
+  font-size:22px;
+}
+
+/* Ocultar Sidebar de Desktop */
+.sidebar{
+  display:none;
+}
+
+.filters{
+  grid-area:filters;
+  background:#e7e7e7;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.filter-title{
+  font-weight:bold;
+  text-align:center;
+  width:100%;
+  color:#333;
+}
+
+.filters select{
+  padding:8px;
+  width:80%;
+  max-width:350px;
+}
+
+/* principal */
+.main{
+  grid-area:main;
+  padding:12px;
+  display:grid;
+  grid-template-columns:1fr;
+}
+
+.card{
+  background:white;
+  padding:10px;
+  text-align:center;
+  border-radius:6px;
+  box-shadow:0 0 5px rgba(0,0,0,0.2);
+}
+
+.card img{
+  width:100%;
+}
+
+.card h3{
+  margin:8px 0;
+  color:#333;
+}
+
+.card button{
+  background:#0b4b8c;
+  color:white;
+  padding:6px 12px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+/* SOLO 1 AUTO EN CELULAR - ESTE LO BUSQUÉ EN LA RED PORQUE REALMENTE NO SABIA COMO HACERLO */
+.main .card:nth-child(n+2){
+  display:none;
+}
+
+.pagination{
+  grid-area:pagination;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:10px;
+}
+
+.pagination span{
+  padding:8px 14px;
+  border:1px solid #0b4b8c;
+  color:#0b4b8c;
+  font-weight:bold;
+  background:white;
+  cursor:pointer;
+}
+
+.pagination span + span{
+  border-left:none;
+}
+
+.footer{
+  grid-area:footer;
+  background:#003b73;
+  color:white;
+  text-align:center;
+  padding:18px 0;
+}
+
+.footer .social{
+  font-size:22px;
+  margin-bottom:6px;
+}
+
+.footer .social i{
+  margin:0 8px;
+}
+
+/* ajustes para versión Escritorio */
+@media (min-width:576px){
+
+  .layout{
+    min-height:100vh;
+    grid-template-columns:240px 1fr;
+    grid-template-areas:
+      "sidebar filters"
+      "sidebar main"
+      "sidebar pagination";
+  }
+
+    .sidebar{
+    grid-area:sidebar;
+    background:#075a9c;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:25px 0;
+    text-align:center;
+  }
+
+  .side-title{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+  }
+
+  .menu{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    font-size:18px;
+    margin-top:0;
+  }
+
+    .sidebar-footer{
+    background:#00316d;
+    padding:25px 0;
+    text-align:center;
+    font-size:13px;
+  }
+
+  .sidebar-footer .icons{
+    margin-bottom:6px;
+  }
+
+  .sidebar-footer i{
+    font-size:22px;
+    margin:0 10px;
+  }
+
+  /* Ocultar algunos de Celular */
+  .topbar,
+  .footer{
+    display:none;
+  }
+
+  /* Filtros */
+  .filters{
+    grid-area:filters;
+    padding:15px 25px;
+    background:#e7e7e7;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+
+  .filter-title{
+    text-align:center;
+    width:100%;
+  }
+
+  .filters select{
+    width:85%;
+    max-width:900px;
+  }
+
+    .main{
+    grid-area:main;
+    padding:18px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+
+  .main .card{
+    display:block !important;
+  }
+
+  .pagination{
+    grid-area:pagination;
+    margin:18px 0;
+  }
+}
